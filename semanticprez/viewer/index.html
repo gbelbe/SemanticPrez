@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wind-Vane Self-Steering Taxonomy — Presentation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="show-en">
+
+  <!-- Fallback for unsupported browsers -->
+  <div class="fallback-message">
+    Your browser <b>doesn't support the features required</b> by impress.js, so this presentation
+    will not work. Please try a recent Chrome, Firefox, or Safari.
+  </div>
+
+  <div id="impress" data-transition-duration="500"
+       data-width="1280" data-height="800" data-max-scale="8" data-min-scale="0">
+    <!-- steps injected by app.js -->
+  </div>
+
+  <!-- Loading cover: hides the one-time warm-up transition on first load -->
+  <div id="warmup"><div class="spinner"></div><div class="wu-label">Preparing map…</div></div>
+
+  <!-- Bottom navigation bar -->
+  <div id="navbar">
+    <div class="nav-hint"><kbd>&darr;</kbd> children &middot; <kbd>&uarr;</kbd> parent &middot; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> same level &middot; <kbd>1</kbd>–<kbd>9</kbd> jump to number &middot; <kbd>Esc</kbd> root</div>
+    <div class="nav-controls">
+      <div id="lang-switch" title="Language (L)"></div>
+      <button id="overview-btn" title="Back to overview (Home)">Overview</button>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="impress.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix ex: <http://example.org/o#> .
+
+ex:Onto a owl:Ontology ; rdfs:label "Tiny Ontology" .
+
+# note: labels are UNTAGGED literals (common in ontologies)
+ex:Thing2 a owl:Class ; rdfs:label "Root" .
+ex:Vehicle a owl:Class ; rdfs:subClassOf ex:Thing2 ; rdfs:label "Vehicle" ; rdfs:comment "A means of transport." .
+ex:Car a owl:Class ; rdfs:subClassOf ex:Vehicle ; rdfs:label "Car" .
+ex:Unlabelled a owl:Class ; rdfs:subClassOf ex:Vehicle .
+
+# individuals attached under their class via rdf:type
+ex:Tesla a owl:NamedIndividual, ex:Car ; rdfs:label "Tesla" ; schema:url "http://example.org/tesla" .
+ex:Beetle a owl:NamedIndividual, ex:Car ; rdfs:label "Beetle" .

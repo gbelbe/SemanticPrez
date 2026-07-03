@@ -1,0 +1,720 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wv: <https://example.org/windvane/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+wv:AftCockpit a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/f/f7/Naga_Pelangi_cockpit-1.jpg> ;
+    skos:broader wv:CockpitLayout ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Aft Cockpit"@en,
+        "Cockpit Arrière"@fr .
+
+wv:BalancedRudder a skos:Concept ;
+    skos:broader wv:RudderCompensation ;
+    skos:definition "A rudder with a significant area forward of the pivot axis, making it very light on the helm. Trim-tab systems must be carefully sized to avoid over-steering."@en,
+        "Safran avec une surface importante en avant de l'axe de pivotement, le rendant très léger à la barre. Les systèmes à tab doivent être soigneusement dimensionnés pour éviter la sur-correction."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Balanced Rudder"@en,
+        "Safran Équilibré"@fr .
+
+wv:BoardingLadder a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/c/ce/Cockpit_and_stern_of_sailboat_Dufour_GibSea_37%2C_with_bathing_ladder_in_water_%28cropped%29.jpg> ;
+    skos:broader wv:TransomObstacle ;
+    skos:definition "A swim or boarding ladder mounted on the transom that may occupy space needed for vane-frame attachment or blade clearance."@en,
+        "Échelle de bain montée sur le tableau arrière pouvant occuper l'espace nécessaire à la fixation du cadre ou au dégagement de la pale."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Boarding / Swim Ladder"@en,
+        "Échelle de Bain"@fr .
+
+wv:BungeeShockCord a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/c/c4/Bungee_Cord_PICT6882a.jpg> ;
+    skos:broader wv:MechanicalComponent ;
+    skos:definition "Elastic cord used to provide centering tension on the vane, compliance in the blade linkage, or to absorb shock loads."@en,
+        "Corde élastique utilisée pour fournir une tension de centrage sur la girouette, de la souplesse dans la liaison de pale, ou pour absorber les chocs."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Bungee / Shock Cord"@en,
+        "Sandow / Corde Élastique"@fr .
+
+wv:CenterCockpit a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/d/d9/TASWELL_CENTER_COCKPIT.jpg> ;
+    skos:broader wv:CockpitLayout ;
+    skos:definition "A cockpit positioned amidships with a large aft cabin behind it. The tiller or wheel is far from the transom, requiring longer line runs to the wind-vane system."@en,
+        "Cockpit positionné au milieu du bateau avec une grande cabine arrière. La barre est éloignée du tableau arrière, nécessitant des drisses plus longues vers le système d'auto-gouverne."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Center Cockpit"@en,
+        "Cockpit Central"@fr .
+
+wv:CenterMounting a skos:Concept ;
+    skos:broader wv:MountingPosition ;
+    skos:definition "The wind-vane frame or blade can be mounted on the centreline of the transom, the preferred position for symmetrical steering forces."@en,
+        "Le cadre ou la pale de l'auto-gouverne peut être monté sur l'axe central du tableau arrière, position préférable pour des forces de gouverne symétriques."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Center Mounting"@en,
+        "Montage Central"@fr .
+
+wv:Centerboarder a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/d/da/Sailing_in_the_Outer_Harbour_%2848965872321%29.jpg> ;
+    skos:altLabel "Centreboard boat"@en,
+        "Dériveur lesté"@fr ;
+    skos:broader wv:Monohull ;
+    skos:definition "A boat with a centreboard or daggerboard. The wind-vane system (especially the vane-rudder) must be designed to be easily liftable or removable to allow the board to be raised in shallow water."@en,
+        "Bateau à dérive centrale ou à daggerboard. Le système d'auto-gouverne (en particulier le safran-girouette) doit être conçu pour pouvoir être relevé ou retiré facilement afin de permettre de remonter la dérive par faible fond."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Centerboarder"@en,
+        "Voilier à Dérive Centrale"@fr ;
+    skos:scopeNote "Requires a liftable or quickly detachable vane-rudder design."@en,
+        "Nécessite une conception de safran-girouette relevable ou rapidement démontable."@fr .
+
+wv:CounterweightSystem a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/4/48/Metal_counterweight_%281%29.jpg> ;
+    skos:broader wv:MechanicalComponent ;
+    skos:definition "Adjustable weights fitted to the vane panel or pendulum arm to balance the system against its own weight and tune sensitivity to wind changes."@en,
+        "Contrepoids réglables fixés au panneau de girouette ou au bras pendulaire pour équilibrer le système face à son propre poids et ajuster la sensibilité aux changements de vent."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Counterweight System"@en,
+        "Système de Contrepoids"@fr .
+
+wv:CurvedTiller a skos:Concept ;
+    skos:broader wv:TillerSteering ;
+    skos:definition "A tiller with a curved or swept shape. The curve may affect the geometry of line attachment points and require an adapted bridle."@en,
+        "Barre franche de forme courbe ou incurvée. La courbure peut affecter la géométrie des points d'attache des drisses et nécessiter un palonnier adapté."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Curved / Swept Tiller"@en,
+        "Barre Franche Courbe"@fr .
+
+wv:DeckLevelTiller a skos:Concept ;
+    skos:broader wv:TillerSteering ;
+    skos:definition "A tiller that runs at or near deck level, sometimes requiring specific line routing or a tiller extension to achieve adequate leverage for the wind-vane connection."@en,
+        "Barre franche au niveau ou près du pont, nécessitant parfois un routage spécifique des drisses ou une rallonge de barre pour obtenir un levier adéquat pour la connexion à l'auto-gouverne."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Deck-Level Tiller"@en,
+        "Barre Franche Ras du Pont"@fr .
+
+wv:FixedKeelBoat a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/d/df/J27_sailboat_2718.jpg> ;
+    skos:broader wv:Monohull ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Fixed-Keel Boat"@en,
+        "Voilier à Quille Fixe"@fr .
+
+wv:KetchRig a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/3/39/Ketch-rigged-galeas.png> ;
+    skos:broader wv:AftSailPresence ;
+    skos:definition "Two-masted rig with the mizzen mast stepped forward of the rudder post. The mizzen boom and sail sweep aft and may obstruct the wind vane at certain points of sail."@en,
+        "Gréement à deux mâts avec le mât d'artimon en avant de l'axe du safran. Le gui et la voile d'artimon balaient vers l'arrière et peuvent obstruer la girouette à certains allures."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Ketch Rig"@en,
+        "Gréement Ketch"@fr .
+
+wv:LinkageLines a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/1/12/LIROS_XTR_Dyneema.jpg> ;
+    skos:altLabel "Control lines"@en,
+        "Lignes de commande"@fr ;
+    skos:broader wv:MechanicalComponent ;
+    skos:definition "Lines (typically Dyneema braid or stainless wire) that transmit steering force from the pendulum arm or servo output to the tiller or wheel drum."@en,
+        "Drisses (généralement tresse Dyneema ou câble inox) transmettant la force de gouverne depuis le bras pendulaire ou la sortie servo jusqu'à la barre franche ou au tambour de la roue."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Linkage Lines"@en,
+        "Drisses de Liaison"@fr .
+
+wv:MountingFrame a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/6/67/Selfsteering_windvane.jpg> ;
+    skos:altLabel "Pushpit mount"@en,
+        "Support sur lisse arrière"@fr ;
+    skos:broader wv:MechanicalComponent ;
+    skos:definition "The structural frame or bracket that attaches the entire wind-vane system to the boat's transom, pushpit, or stern rails."@en,
+        "Le cadre ou support structurel qui fixe l'ensemble du système d'auto-gouverne au tableau arrière, à la lisse arrière ou aux filières de poupe du bateau."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Mounting Frame"@en,
+        "Cadre de Montage"@fr .
+
+wv:NoBackstay a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/3/31/Sloop_under_full_sail%2C_close_reaching%2C_showing_its_fractional_rig.jpg> ;
+    skos:broader wv:BackstayPresence ;
+    skos:definition "Rigs without a permanent backstay (e.g. fractional rigs with swept spreaders), giving full freedom for vane height and centreline placement."@en,
+        "Gréements sans pataras permanent (ex. gréements fractionnés à barres de flèche reculées), offrant pleine liberté pour la hauteur et le positionnement de la girouette."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "No Backstay"@en,
+        "Sans Pataras"@fr .
+
+wv:OutboardBracket a skos:Concept ;
+    skos:broader wv:TransomObstacle ;
+    skos:definition "A bracket for an outboard engine mounted on the transom which may conflict with wind-vane system placement or require the system to be offset to one side."@en,
+        "Support de moteur hors-bord monté sur le tableau arrière pouvant entrer en conflit avec le placement du système d'auto-gouverne ou nécessiter un décalage latéral."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Outboard Motor Bracket"@en,
+        "Support Moteur Hors-Bord"@fr .
+
+wv:PendulumArm a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/6/67/Selfsteering_windvane.jpg> ;
+    skos:broader wv:MechanicalComponent ;
+    skos:definition "The rigid arm that holds the vane-rudder (oar) in a servo-pendulum system and pivots athwartships under hydrodynamic force to generate steering power."@en,
+        "Le bras rigide qui maintient le safran-girouette (rame) dans un système servo-pendulaire et pivote en travers sous l'effet hydrodynamique pour générer la puissance de gouverne."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Pendulum Arm"@en,
+        "Bras Pendulaire"@fr ;
+    skos:related wv:OarVaneRudder,
+        wv:ServoPendulum .
+
+wv:PureVane a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/3/37/BlondieHaslerTrimTabSelfSteering.png> ;
+    skos:broader wv:WindVaneSystemType ;
+    skos:definition "A system where the wind vane directly actuates the main rudder or tiller through mechanical linkages, without servo amplification."@en,
+        "Système où la girouette actionne directement le safran ou la barre via des liaisons mécaniques, sans amplification servo."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Pure Vane (Direct Mechanical)"@en,
+        "Girouette Pure (Mécanique Directe)"@fr .
+
+wv:PushPullTiller a skos:Concept ;
+    skos:broader wv:TillerSteering ;
+    skos:definition "A tiller connection using a rigid push-pull rod rather than lines, providing direct and play-free mechanical coupling to the wind-vane output."@en,
+        "Connexion de barre utilisant une bielle rigide push-pull plutôt que des drisses, offrant un couplage mécanique direct et sans jeu à la sortie de l'auto-gouverne."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Push-Pull Tiller Connection"@en,
+        "Connexion Barre Push-Pull"@fr .
+
+wv:RakedTransom a skos:Concept ;
+    skos:broader wv:TransomShape ;
+    skos:definition "A transom angled aft at the top, common on traditional designs. Mounting brackets must account for the angle."@en,
+        "Tableau arrière incliné vers l'arrière en haut, courant sur les conceptions traditionnelles. Les supports de montage doivent tenir compte de cet angle."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Raked Transom"@en,
+        "Tableau Arrière Incliné"@fr .
+
+wv:ReverseTransom a skos:Concept ;
+    skos:altLabel "Plumb / reverse transom"@en,
+        "Tableau plongeant"@fr ;
+    skos:broader wv:TransomShape ;
+    skos:definition "A transom that overhangs forward at the top, found on modern performance designs. May limit where the vane frame can attach."@en,
+        "Tableau arrière qui surplombe vers l'avant en haut, présent sur les conceptions modernes haute performance. Peut limiter les points de fixation du cadre de l'auto-gouverne."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Reverse Transom"@en,
+        "Tableau Arrière Inversé"@fr .
+
+wv:SemiBalancedRudder a skos:Concept ;
+    skos:broader wv:RudderCompensation ;
+    skos:definition "A rudder with a moderate area forward of the pivot axis; moderate helm weight, compatible with most self-steering systems."@en,
+        "Safran avec une surface modérée en avant de l'axe de pivotement ; effort de barre modéré, compatible avec la plupart des systèmes d'auto-gouverne."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Semi-Balanced Rudder"@en,
+        "Safran Semi-Équilibré"@fr .
+
+wv:SideMounting a skos:Concept ;
+    skos:broader wv:MountingPosition ;
+    skos:definition "Constraints (obstacles, twin rudders, etc.) force the blade or frame to be mounted off-centre to one side of the transom, requiring asymmetric design compensation."@en,
+        "Des contraintes (obstacles, safrans jumeaux, etc.) imposent un montage décentré d'un côté du tableau arrière, nécessitant une compensation de conception asymétrique."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Side Mounting (Only)"@en,
+        "Montage Latéral (Uniquement)"@fr .
+
+wv:SingleBackstay a skos:Concept ;
+    skos:broader wv:BackstayPresence ;
+    skos:definition "A single backstay on the centreline; limits vane height and may require the vane to be mounted offset to one side."@en,
+        "Pataras unique sur l'axe central ; limite la hauteur de la girouette et peut nécessiter un montage décalé latéralement."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Single Backstay"@en,
+        "Pataras Simple"@fr .
+
+wv:SingleRudder a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/4/41/Catalina_34_Mark_II_sailboat_Rudder_Chaos_5507.jpg> ;
+    skos:broader wv:RudderNumber ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Single Rudder"@en,
+        "Safran Unique"@fr .
+
+wv:SkegHungRudder a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/8/8c/Skeg_and_rudder.jpg> ;
+    skos:broader wv:RudderType ;
+    skos:definition "A rudder supported by a skeg at the leading edge, offering protection and stiffness but making auxiliary-rudder attachment more complex."@en,
+        "Safran soutenu par un aileron (skeg) sur le bord d'attaque, offrant protection et rigidité mais compliquant la fixation d'un safran auxiliaire."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Skeg-Hung Rudder"@en,
+        "Safran sur Aileron (Skeg)"@fr .
+
+wv:SpadeRudder a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/4/41/Catalina_34_Mark_II_sailboat_Rudder_Chaos_5507.jpg> ;
+    skos:altLabel "Balanced spade rudder"@en ;
+    skos:broader wv:RudderType ;
+    skos:definition "A rudder with no leading-edge support, offering good hydrodynamic performance. Trim-tab design must account for the rudder's flex."@en,
+        "Safran sans soutien sur le bord d'attaque, offrant de bonnes performances hydrodynamiques. La conception du tab doit tenir compte de la flexion du safran."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Spade Rudder"@en,
+        "Safran Suspendu (Spade)"@fr .
+
+wv:SplitBackstay a skos:Concept ;
+    skos:broader wv:BackstayPresence ;
+    skos:definition "A backstay that divides into two lower legs at the transom, leaving a central gap that can accommodate a taller or wider wind vane."@en,
+        "Pataras se divisant en deux branches inférieures au tableau arrière, laissant un espace central pouvant accueillir une girouette plus haute ou plus large."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Split / Divided Backstay"@en,
+        "Pataras Fractionné"@fr .
+
+wv:SugarScoopTransom a skos:Concept ;
+    skos:broader wv:TransomShape ;
+    skos:definition "A concave scoop-shaped stern with a built-in swim step, common on catamarans and modern cruisers. Poses significant mounting challenges for conventional wind-vane systems."@en,
+        "Poupe concave en forme de cuillère avec marche de bain intégrée, courante sur les catamarans et croiseurs modernes. Pose des défis importants de montage pour les systèmes d'auto-gouverne classiques."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Sugar-Scoop Transom"@en,
+        "Tableau Arrière en Cuillère"@fr .
+
+wv:SwimPlatformTransom a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/a/ae/Swimming_ladder_in_upright_%28non-usable%2C_for_cruising%29_position_on_sailboat_Beneteau_Oceanis_40_%28cropped%29.JPG> ;
+    skos:broader wv:TransomShape ;
+    skos:definition "A transom fitted with a fixed swim or boarding platform that may block standard mounting points for the vane frame."@en,
+        "Tableau arrière équipé d'une plateforme de bain fixe pouvant bloquer les points de montage standard du cadre de l'auto-gouverne."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Transom with Swim Platform"@en,
+        "Tableau Arrière avec Plateforme de Bain"@fr .
+
+wv:TillerConnection a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/e/e6/002_Chrome_steel_boat_cleat_with_tied_mooring_rope_-_nautical_vessel_equipment_detail%2C_yacht_cleat.jpg> ;
+    skos:broader wv:MechanicalComponent ;
+    skos:definition "The attachment point and mechanism (cleat, block, bridle, drum) connecting the wind-vane output lines to the tiller or steering wheel."@en,
+        "Le point d'attache et le mécanisme (taquet, poulie, palonnier, tambour) reliant les lignes de sortie de l'auto-gouverne à la barre franche ou à la roue de barre."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Tiller / Helm Connection"@en,
+        "Connexion à la Barre"@fr ;
+    skos:related wv:SteeringInput .
+
+wv:TransomHungRudder a skos:Concept ;
+    skos:broader wv:RudderType ;
+    skos:definition "A rudder hung directly on pintles on the transom, typical of traditional designs. Favours trim-tab or direct vane-rudder attachment."@en,
+        "Safran monté directement sur des aiguillots sur le tableau arrière, typique des conceptions traditionnelles. Favorise les systèmes à tab ou à fixation directe."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Transom-Hung Rudder"@en,
+        "Safran sur Tableau Arrière"@fr .
+
+wv:TwinRudderConfig a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/3/30/Start_of_the_Sydney-Hobart_Yacht_Race%2C_1971_%282880982738%29.jpg> ;
+    skos:broader wv:RudderNumber ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Twin-Rudder Configuration"@en,
+        "Configuration à Safrans Jumeaux"@fr .
+
+wv:UnbalancedRudder a skos:Concept ;
+    skos:broader wv:RudderCompensation ;
+    skos:definition "A rudder entirely aft of the pivot axis with no forward area. Heavier helm forces favour servo-amplified systems such as servo-pendulum."@en,
+        "Safran entièrement en arrière de l'axe de pivotement sans surface avant. Les forces de barre plus importantes favorisent les systèmes à amplification servo comme le servo-pendulaire."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Unbalanced Rudder"@en,
+        "Safran Non Équilibré"@fr .
+
+wv:UniversalJoint a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/b/bb/Cardan-joint_intermediate-shaft_3D.png> ;
+    skos:broader wv:MechanicalComponent ;
+    skos:definition "A flexible mechanical joint allowing multi-axis rotation, used to connect the vane sensor to the servo blade shaft or to transmit motion through angled axes without binding."@en,
+        "Joint mécanique flexible permettant une rotation multi-axes, utilisé pour relier la girouette à l'axe de la pale servo ou pour transmettre le mouvement à travers des axes inclinés sans coincement."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Universal Joint (Cardan)"@en,
+        "Joint Universel (Cardan)"@fr .
+
+wv:VaneSensor a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/6/67/Selfsteering_windvane.jpg> ;
+    skos:broader wv:MechanicalComponent ;
+    skos:definition "The wind-facing panel or aerofoil that senses apparent wind angle and initiates the steering correction by rotating around its axis."@en,
+        "Le panneau ou profil aérodynamique face au vent qui détecte l'angle du vent apparent et initie la correction de cap en pivotant autour de son axe."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Vane Sensor (Wind Element)"@en,
+        "Girouette (Capteur Éolien)"@fr ;
+    skos:related wv:VaneType .
+
+wv:VerticalTransom a skos:Concept ;
+    skos:broader wv:TransomShape ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Vertical Transom"@en,
+        "Tableau Arrière Vertical"@fr .
+
+wv:WheelSteering a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/b/b1/Xp_33_sailboat_cockpit_%288458552008%29.jpg> ;
+    skos:broader wv:SteeringInput ;
+    skos:definition "Steering by wheel. Wind-vane connection typically requires a drum-and-line system fitted to the wheel or a dedicated autopilot coupling on the rudder stock."@en,
+        "Barre à roue. La connexion au système d'auto-gouverne nécessite généralement un système tambour-drisses sur la roue ou un couplage dédié sur l'axe du safran."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Wheel Steering"@en,
+        "Barre à Roue"@fr .
+
+wv:YawlRig a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/2/23/Alberg_37_Yawl_sailboat_Peregrina_1916.jpg> ;
+    skos:broader wv:AftSailPresence ;
+    skos:definition "Two-masted rig with a small mizzen mast stepped aft of the rudder post, very close to where the wind-vane is typically mounted. Requires careful integration of vane and mizzen."@en,
+        "Gréement à deux mâts avec un petit mât d'artimon en arrière de l'axe du safran, très proche de l'emplacement habituel de la girouette. Nécessite une intégration soignée de la girouette et de l'artimon."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Yawl Rig"@en,
+        "Gréement Yawl"@fr .
+
+wv:catamaran a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/8/8e/Sailing-catamaran-charter-yacht.jpg> ;
+    skos:broader wv:MultiHull ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "catamaran"@en .
+
+wv:proa a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/e/ed/Proa_a_la_Laguna.jpg> ;
+    skos:broader wv:MultiHull ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "proa"@en,
+        "prao"@fr .
+
+wv:trimaran a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/9/9e/Corsair_F-31_trimaran_sailboat_Osprey_2821.jpg> ;
+    skos:broader wv:MultiHull ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "trimaran"@en .
+
+wv:AttachedToRudder a skos:Concept ;
+    skos:altLabel "Add-on auxiliary rudder"@en,
+        "Safran auxiliaire rapporté"@fr ;
+    skos:broader wv:VaneRudderType ;
+    skos:definition "A separate small rudder or blade mounted externally alongside or behind the main rudder and controlled by the vane system. The main rudder is left free or locked."@en,
+        "Petit safran ou pale distinct fixé extérieurement à côté ou derrière le safran principal et commandé par le système à girouette. Le safran principal est laissé libre ou bloqué."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Attached to Rudder"@en,
+        "Fixé au Safran"@fr ;
+    skos:related wv:AuxiliaryRudderWithTrimTab .
+
+wv:HorizontalAxisVane a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/6/67/Selfsteering_windvane.jpg> ;
+    skos:altLabel "Feathering vane"@en,
+        "Girouette couchante"@fr ;
+    skos:broader wv:VaneType ;
+    skos:definition "A vane that rotates around a horizontal fore-and-aft axis, tilting to one side in response to wind angle changes. Commonly used on servo-pendulum systems."@en,
+        "Girouette pivotant autour d'un axe horizontal longitudinal, s'inclinant d'un côté selon les variations d'angle du vent. Utilisée couramment sur les systèmes servo-pendulaires."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Horizontal-Axis Vane"@en,
+        "Girouette à Axe Horizontal"@fr ;
+    skos:related wv:ServoPendulum .
+
+wv:IntegratedTrimTab a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/5/56/Trasmissione_tra_banderuola_a_timoncino.png> ;
+    skos:altLabel "Built-in trim tab"@en,
+        "Tab intégré au safran"@fr ;
+    skos:broader wv:VaneRudderType ;
+    skos:definition "A trim tab that forms part of the main rudder's trailing edge. The vane deflects the tab which then swings the main rudder through hydrodynamic leverage, without any separate blade."@en,
+        "Tab faisant partie du bord de fuite du safran principal. La girouette déplace le tab qui fait ensuite pivoter le safran principal par effet hydrodynamique, sans pale séparée."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Integrated Trim Tab (Part of Rudder)"@en,
+        "Tab Intégré (Partie du Safran)"@fr ;
+    skos:related wv:TrimTabOnMainRudder .
+
+wv:TrimTabServoPendulum a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/6/67/Selfsteering_windvane.jpg> ;
+    skos:altLabel "Mixed servo-pendulum"@en,
+        "Servo-pendul mixte"@fr ;
+    skos:broader wv:WindVaneSystemType ;
+    skos:definition "A hybrid system combining a trim tab mounted on the servo-pendulum oar blade and a pendulum mechanism, allowing independent or combined vane and tab control."@en,
+        "Système hybride combinant un tab monté sur la pale-rame servo-pendulaire et un mécanisme pendulaire, permettant un contrôle indépendant ou combiné de la girouette et du tab."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Trim-Tab Servo-Pendulum"@en,
+        "Servo-Pendulaire à Tab"@fr ;
+    skos:related wv:OarVaneRudder .
+
+wv:AftSailPresence a skos:Concept ;
+    skos:broader wv:RiggingConstraint ;
+    skos:definition "The presence of an aft sail (mizzen) on a ketch or yawl rig. The mizzen boom, sail, and associated rigging may obstruct the wind vane or require a special elevated or offset mounting."@en,
+        "Présence d'une voile d'artimon sur un gréement ketch ou yawl. Le gui, la voile et le gréement d'artimon peuvent obstruer la girouette ou nécessiter un montage surélevé ou décalé."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:KetchRig,
+        wv:YawlRig ;
+    skos:prefLabel "Aft Sail Presence"@en,
+        "Présence d'une Voile Arrière (Artimon)"@fr .
+
+wv:AuxiliaryRudderWithTrimTab a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/5/56/Trasmissione_tra_banderuola_a_timoncino.png> ;
+    skos:broader wv:WindVaneSystemType ;
+    skos:definition "A system using a separate small auxiliary rudder controlled by a trim tab linked to the wind vane to steer the boat independently of the main rudder."@en,
+        "Système utilisant un petit safran auxiliaire indépendant commandé par un tab lié à la girouette pour gouverner le bateau indépendamment du safran principal."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Auxiliary Rudder with Trim Tab"@en,
+        "Safran Auxiliaire avec Tab de Réglage"@fr ;
+    skos:related wv:AttachedToRudder,
+        wv:VerticalAxisVane .
+
+wv:CockpitLayout a skos:Concept ;
+    skos:broader wv:BoatCharacteristic ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:AftCockpit,
+        wv:CenterCockpit ;
+    skos:prefLabel "Cockpit Layout"@en,
+        "Disposition du Cockpit"@fr .
+
+wv:HullType a skos:Concept ;
+    skos:broader wv:BoatCharacteristic ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:Monohull,
+        wv:MultiHull ;
+    skos:prefLabel "Hull Type"@en,
+        "Type de Coque"@fr .
+
+wv:MountingPosition a skos:Concept ;
+    skos:broader wv:TransomCharacteristic ;
+    skos:definition "The available position(s) on or near the transom for attaching the wind-vane system frame or blade."@en,
+        "Position(s) disponible(s) sur ou près du tableau arrière pour fixer le cadre ou la pale du système d'auto-gouverne."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:CenterMounting,
+        wv:SideMounting ;
+    skos:prefLabel "Mounting Position"@en,
+        "Position de Montage"@fr .
+
+wv:RiggingConstraint a skos:Concept ;
+    skos:broader wv:BoatCharacteristic ;
+    skos:definition "Rigging elements at the stern that may restrict the height, placement, or free movement of the wind vane sensor."@en,
+        "Éléments du gréement en poupe pouvant limiter la hauteur, le placement ou le libre mouvement de la girouette."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:AftSailPresence,
+        wv:BackstayPresence ;
+    skos:prefLabel "Rigging Constraint"@en,
+        "Contrainte de Gréement"@fr .
+
+wv:RudderNumber a skos:Concept ;
+    skos:broader wv:RudderCharacteristic ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:SingleRudder,
+        wv:TwinRudderConfig ;
+    skos:prefLabel "Number of Rudders"@en,
+        "Nombre de Safrans"@fr .
+
+wv:TransomObstacle a skos:Concept ;
+    skos:broader wv:TransomCharacteristic ;
+    skos:definition "Existing equipment on the transom that may interfere with wind-vane system mounting and must be accommodated in the design."@en,
+        "Équipement existant sur le tableau arrière pouvant interférer avec le montage du système d'auto-gouverne et devant être pris en compte dans la conception."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:BoardingLadder,
+        wv:OutboardBracket ;
+    skos:prefLabel "Transom Obstacle"@en,
+        "Obstacle sur Tableau Arrière"@fr .
+
+wv:TrimTabOnMainRudder a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/5/56/Trasmissione_tra_banderuola_a_timoncino.png> ;
+    skos:altLabel "Trim tab"@en,
+        "Volet de réglage"@fr ;
+    skos:broader wv:WindVaneSystemType ;
+    skos:definition "A tab mounted on the trailing edge of the main rudder, directly linked to the wind vane, which deflects the rudder through hydrodynamic leverage."@en,
+        "Volet monté sur le bord de fuite du safran principal, directement relié à la girouette, qui fait pivoter le safran par effet hydrodynamique."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Trim Tab on Main Rudder"@en,
+        "Tab de Réglage sur Safran Principal"@fr ;
+    skos:related wv:IntegratedTrimTab,
+        wv:VerticalAxisVane .
+
+wv:VerticalAxisVane a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/5/54/Weather_Vane_-_geograph.org.uk_-_1334125.jpg> ;
+    skos:altLabel "Weather-vane style"@en,
+        "Style girouette de clocher"@fr ;
+    skos:broader wv:VaneType ;
+    skos:definition "A vane that rotates around a vertical axis, like a classic weather vane, pivoting left and right with apparent wind direction."@en,
+        "Girouette pivotant autour d'un axe vertical, comme une girouette classique, tournant à gauche ou à droite selon le vent apparent."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Vertical-Axis Vane"@en,
+        "Girouette à Axe Vertical"@fr ;
+    skos:related wv:AuxiliaryRudderWithTrimTab,
+        wv:TrimTabOnMainRudder .
+
+wv:Monohull a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/b/b5/Imoca_Macif_sant%C3%A9_pr%C3%A9voyance_01.jpg> ;
+    skos:broader wv:HullType ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:BackstayPresence,
+        wv:Centerboarder,
+        wv:FixedKeelBoat ;
+    skos:prefLabel "monohull"@en,
+        "monocoque"@fr .
+
+wv:MultiHull a skos:Concept ;
+    skos:broader wv:HullType ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:catamaran,
+        wv:proa,
+        wv:trimaran ;
+    skos:prefLabel "Multihull"@en,
+        "Multicoques"@fr .
+
+wv:OarVaneRudder a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/6/67/Selfsteering_windvane.jpg> ;
+    skos:altLabel "Pendulum oar"@en,
+        "Rame pendulaire"@fr ;
+    skos:broader wv:VaneRudderType ;
+    skos:definition "A free-swinging oar-shaped blade suspended below the transom that acts as both pendulum and servo element. When deflected by the vane, water flow swings it sideways generating strong corrective steering force transmitted to the helm via lines."@en,
+        "Pale en forme d'aviron suspendue librement sous le tableau arrière faisant office à la fois de pendule et d'élément servo. Déplacée par la girouette, le flux d'eau la fait osciller latéralement générant une force de gouverne importante transmise à la barre par des drisses."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Oar-Type Vane-Rudder"@en,
+        "Safran-Girouette en Aviron"@fr ;
+    skos:related wv:ServoPendulum,
+        wv:TrimTabServoPendulum .
+
+wv:RudderCharacteristic a skos:Concept ;
+    skos:broader wv:BoatCharacteristic ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:RudderCompensation,
+        wv:RudderNumber,
+        wv:RudderType ;
+    skos:prefLabel "Rudder Characteristic"@en,
+        "Caractéristique du Safran"@fr .
+
+wv:RudderCompensation a skos:Concept ;
+    skos:broader wv:RudderCharacteristic ;
+    skos:definition "The degree to which the rudder blade area extends forward of the pivot axis, reducing the steering torque required and affecting trim-tab effectiveness."@en,
+        "Degré auquel la surface du safran s'étend en avant de l'axe de pivotement, réduisant le couple de barre nécessaire et influençant l'efficacité d'un tab de réglage."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:BalancedRudder,
+        wv:SemiBalancedRudder,
+        wv:UnbalancedRudder ;
+    skos:prefLabel "Rudder Compensation"@en,
+        "Compensation du Safran"@fr .
+
+wv:RudderType a skos:Concept ;
+    skos:broader wv:RudderCharacteristic ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:SkegHungRudder,
+        wv:SpadeRudder,
+        wv:TransomHungRudder ;
+    skos:prefLabel "Rudder Type"@en,
+        "Type de Safran"@fr .
+
+wv:ServoPendulum a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/6/67/Selfsteering_windvane.jpg> ;
+    skos:altLabel "Servo pendulum"@en,
+        "Servo-pendul"@fr ;
+    skos:broader wv:WindVaneSystemType ;
+    skos:definition "A system where the vane deflects a submerged pendulum blade (oar) which generates a powerful servo force transmitted to the main rudder via lines."@en,
+        "Système où la girouette déplace une pale pendulaire immergée (rame) qui génère une force servo puissante transmise au safran principal par des drisses."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:prefLabel "Servo-Pendulum System"@en,
+        "Système Servo-Pendulaire"@fr ;
+    skos:related wv:HorizontalAxisVane,
+        wv:OarVaneRudder .
+
+wv:SteeringInput a skos:Concept ;
+    skos:broader wv:BoatCharacteristic ;
+    skos:definition "How the boat is normally steered, directly affecting how the wind-vane system output is connected to the helm."@en,
+        "Type de commande de barre du bateau"@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:TillerSteering,
+        wv:WheelSteering ;
+    skos:prefLabel "Steering Input Type"@en,
+        "Type de Commande de Barre"@fr .
+
+wv:TillerSteering a skos:Concept ;
+    skos:broader wv:SteeringInput ;
+    skos:definition "Direct tiller steering. Typically simpler to connect to wind-vane systems via lines attached to the tiller."@en,
+        "Barre franche directe. Généralement plus simple à connecter aux systèmes d'auto-gouverne via des drisses fixées à la barre."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:CurvedTiller,
+        wv:DeckLevelTiller,
+        wv:PushPullTiller ;
+    skos:prefLabel "Tiller Steering"@en,
+        "Barre Franche"@fr .
+
+wv:TransomCharacteristic a skos:Concept ;
+    skos:broader wv:BoatCharacteristic ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:MountingPosition,
+        wv:TransomObstacle,
+        wv:TransomShape ;
+    skos:prefLabel "Transom Characteristic"@en,
+        "Caractéristique du Tableau Arrière"@fr .
+
+wv:VaneRudderType a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/6/67/Selfsteering_windvane.jpg> ;
+    skos:definition "Classification of the underwater steering element used in wind-vane systems: the servo blade or auxiliary rudder that translates vane movement into course correction."@en,
+        "Classification de l'élément de gouvernail immergé utilisé dans les systèmes d'auto-gouverne : la pale servo ou le safran auxiliaire qui traduit le mouvement de la girouette en correction de cap."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:AttachedToRudder,
+        wv:IntegratedTrimTab,
+        wv:OarVaneRudder ;
+    skos:prefLabel "Vane-Rudder Type"@en,
+        "Type de Safran-Girouette"@fr ;
+    skos:topConceptOf wv:WindVaneTaxonomy .
+
+wv:VaneType a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/3/37/BlondieHaslerTrimTabSelfSteering.png> ;
+    skos:definition "Classification of wind-sensing vanes by their axis of rotation."@en,
+        "Classification des girouettes (capteur de vent) selon leur axe de rotation."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:HorizontalAxisVane,
+        wv:VerticalAxisVane ;
+    skos:prefLabel "Vane Type"@en,
+        "Type de Girouette"@fr ;
+    skos:topConceptOf wv:WindVaneTaxonomy .
+
+wv:BackstayPresence a skos:Concept ;
+    skos:broader wv:Monohull,
+        wv:RiggingConstraint ;
+    skos:definition "A permanent backstay running from the masthead to the stern may obstruct or limit the height of the wind vane. Its configuration significantly affects vane design choices."@en,
+        "Un pataras permanent allant de la tête de mât à la poupe peut obstruer ou limiter la hauteur de la girouette. Sa configuration influence significativement les choix de conception."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:NoBackstay,
+        wv:SingleBackstay,
+        wv:SplitBackstay ;
+    skos:prefLabel "Backstay"@en,
+        "Pataras"@fr .
+
+wv:TransomShape a skos:Concept ;
+    skos:broader wv:TransomCharacteristic ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:RakedTransom,
+        wv:ReverseTransom,
+        wv:SugarScoopTransom,
+        wv:SwimPlatformTransom,
+        wv:VerticalTransom ;
+    skos:prefLabel "Transom Shape"@en,
+        "Forme du Tableau Arrière"@fr .
+
+wv:WindVaneSystemType a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/3/37/BlondieHaslerTrimTabSelfSteering.png> ;
+    skos:definition "Classification of self-steering systems by their operating principle."@en,
+        "Classification des systèmes d'auto-gouverne selon leur principe de fonctionnement."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:AuxiliaryRudderWithTrimTab,
+        wv:PureVane,
+        wv:ServoPendulum,
+        wv:TrimTabOnMainRudder,
+        wv:TrimTabServoPendulum ;
+    skos:prefLabel "Wind-Vane System Type"@en,
+        "Type de Système d'Auto-Gouverne"@fr ;
+    skos:topConceptOf wv:WindVaneTaxonomy .
+
+wv:BoatCharacteristic a skos:Concept ;
+    skos:definition "Physical and layout characteristics of the boat that affect the selection, design, or mounting of a DIY wind-vane self-steering system."@en,
+        "Caractéristiques physiques et de disposition du bateau influençant le choix, la conception ou le montage d'un système d'auto-gouverne à girouette DIY."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:CockpitLayout,
+        wv:HullType,
+        wv:RiggingConstraint,
+        wv:RudderCharacteristic,
+        wv:SteeringInput,
+        wv:TransomCharacteristic ;
+    skos:prefLabel "Boat Characteristic"@en,
+        "Caractéristique du Bateau"@fr ;
+    skos:topConceptOf wv:WindVaneTaxonomy .
+
+wv:MechanicalComponent a skos:Concept ;
+    schema:image <https://upload.wikimedia.org/wikipedia/commons/6/67/Selfsteering_windvane.jpg> ;
+    skos:definition "Individual mechanical parts that make up a DIY wind-vane self-steering system."@en,
+        "Pièces mécaniques individuelles composant un système d'auto-gouverne à girouette DIY."@fr ;
+    skos:inScheme wv:WindVaneTaxonomy ;
+    skos:narrower wv:BungeeShockCord,
+        wv:CounterweightSystem,
+        wv:LinkageLines,
+        wv:MountingFrame,
+        wv:PendulumArm,
+        wv:TillerConnection,
+        wv:UniversalJoint,
+        wv:VaneSensor ;
+    skos:prefLabel "Mechanical Component"@en,
+        "Composant Mécanique"@fr ;
+    skos:topConceptOf wv:WindVaneTaxonomy .
+
+wv:WindVaneTaxonomy a skos:ConceptScheme ;
+    dcterms:created "2026-03-25"^^xsd:date ;
+    dcterms:description "A taxonomy covering DIY wind-vane self-steering systems for sailing boats, including system types, vane types, vane-rudder types, mechanical components, and boat characteristics affecting design and compatibility."@en,
+        "Taxonomie couvrant les systèmes d'auto-gouverne à girouette DIY pour voiliers, incluant les types de systèmes, de girouettes, de safrans-girouettes, les composants mécaniques et les caractéristiques du bateau influençant la conception et la compatibilité."@fr ;
+    dcterms:title "DIY Wind-Vane Self-Steering Systems Taxonomy"@en,
+        "Taxonomie DIY des Systèmes d'Auto-Gouverne à Girouette"@fr ;
+    skos:hasTopConcept wv:BoatCharacteristic,
+        wv:MechanicalComponent,
+        wv:VaneRudderType,
+        wv:VaneType,
+        wv:WindVaneSystemType .
+

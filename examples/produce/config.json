@@ -1,0 +1,43 @@
+{
+  "_comment": "OWL ontology example. Run:  python -m semanticprez.build examples/produce/config.json",
+
+  "input": "produce.ttl",
+  "output": "build",
+
+  "namespaces": {
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "owl":    "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/"
+  },
+
+  "languages": ["en"],
+
+  "nodeTypes": ["owl:Class", "owl:NamedIndividual"],
+
+  "scheme": {
+    "type": "owl:Ontology",
+    "fields": {
+      "title":       { "property": "rdfs:label", "localized": true },
+      "description": { "property": "rdfs:comment", "localized": true }
+    }
+  },
+
+  "hierarchy": {
+    "parentLinks": ["rdfs:subClassOf", "rdf:type"],
+    "childLinks": []
+  },
+
+  "fields": {
+    "title":       { "property": "rdfs:label", "localized": true },
+    "description": { "property": "rdfs:comment", "localized": true },
+    "image":       { "property": "schema:image" },
+    "links":       { "property": "schema:url", "multi": true }
+  },
+
+  "display": [
+    { "field": "image",       "as": "image" },
+    { "field": "description", "as": "paragraph" },
+    { "field": "links",       "as": "links", "label": "Links" }
+  ]
+}

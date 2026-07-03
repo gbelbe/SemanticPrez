@@ -1,0 +1,52 @@
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix ex:     <https://example.org/produce#> .
+
+ex:Ontology a owl:Ontology ;
+    rdfs:label "Produce Ontology"@en ;
+    rdfs:comment "A tiny OWL example: produce classes with individual items, showing subclass and instance navigation."@en .
+
+# ---- classes (hierarchy via rdfs:subClassOf) ----
+ex:Produce a owl:Class ;
+    rdfs:label "Produce"@en ;
+    rdfs:comment "Edible plant products."@en .
+
+ex:Fruit a owl:Class ;
+    rdfs:subClassOf ex:Produce ;
+    rdfs:label "Fruit"@en ;
+    rdfs:comment "The sweet, seed-bearing produce of a plant."@en .
+
+ex:CitrusFruit a owl:Class ;
+    rdfs:subClassOf ex:Fruit ;
+    rdfs:label "Citrus Fruit"@en ;
+    rdfs:comment "Acidic, juicy fruit of the genus Citrus."@en .
+
+ex:Vegetable a owl:Class ;
+    rdfs:subClassOf ex:Produce ;
+    rdfs:label "Vegetable"@en ;
+    rdfs:comment "An edible plant or part of a plant, usually savoury."@en .
+
+# ---- individuals (attached to their class via rdf:type) ----
+ex:Apple a owl:NamedIndividual, ex:Fruit ;
+    rdfs:label "Apple"@en ;
+    rdfs:comment "A crisp pomaceous fruit."@en ;
+    schema:url "https://en.wikipedia.org/wiki/Apple" .
+
+ex:Banana a owl:NamedIndividual, ex:Fruit ;
+    rdfs:label "Banana"@en ;
+    rdfs:comment "An elongated tropical fruit."@en .
+
+ex:Orange a owl:NamedIndividual, ex:CitrusFruit ;
+    rdfs:label "Orange"@en ;
+    schema:url "https://en.wikipedia.org/wiki/Orange_(fruit)" .
+
+ex:Lemon a owl:NamedIndividual, ex:CitrusFruit ;
+    rdfs:label "Lemon"@en .
+
+ex:Carrot a owl:NamedIndividual, ex:Vegetable ;
+    rdfs:label "Carrot"@en ;
+    rdfs:comment "An orange root vegetable."@en .
+
+ex:Potato a owl:NamedIndividual, ex:Vegetable ;
+    rdfs:label "Potato"@en .

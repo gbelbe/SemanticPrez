@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "semanticprez"
+version = "0.1.0"
+description = "Zoomable, nested presentations generated from SKOS taxonomies and OWL ontologies"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "gbelbe" }]
+keywords = ["skos", "owl", "ontology", "taxonomy", "rdf", "presentation", "impress.js"]
+dependencies = [
+    "rdflib>=7,<8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+semanticprez = "semanticprez.build:main"
+
+[tool.setuptools]
+packages = ["semanticprez"]
+
+[tool.setuptools.package-data]
+semanticprez = ["viewer/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

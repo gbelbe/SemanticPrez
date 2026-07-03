@@ -1,0 +1,173 @@
+:root {
+  --bg: #0d1117;
+  --card: #161b22;
+  --card-2: #1c232d;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --line: #30363d;
+  /* branch accent colors are injected from config.json at runtime */
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased; overflow: hidden;
+}
+
+.fallback-message { display: none; max-width: 640px; margin: 15% auto; padding: 1.5em;
+  border: 1px solid var(--line); border-radius: 10px; color: var(--muted); }
+.impress-not-supported .fallback-message { display: block; }
+.impress-not-supported #navbar { display: none; }
+
+/* ---------- Steps (fixed boxes so nesting is uniform) ---------- */
+.step {
+  width: 1280px; height: 800px;
+  opacity: 1;                     /* visible so children preview inside parents */
+  transition: opacity .5s ease;
+}
+.step.leaf { opacity: .9; }
+.step.active { opacity: 1; }
+/* detail slides of a high-fan-out node stay hidden until their subtree is entered */
+.step.detail { transition: opacity .35s ease; }
+.step.detail:not(.reveal) { opacity: 0; pointer-events: none; }
+
+.card {
+  position: relative; width: 100%; height: 100%; overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 6px solid var(--accent, var(--line));
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  padding: 30px 40px;
+}
+/* the active (viewed) slide is full-bleed: no rounded frame, no shadow halo,
+   just the thin coloured top accent */
+.step.active .card {
+  border-radius: 0; border-left: 0; border-right: 0; border-bottom: 0;
+  box-shadow: none;
+}
+
+/* has-stage: content lives in the top half; children sit in the stage well */
+.card.has-stage { padding: 0; }
+/* keep the parent's own text in the top ~36% so it doesn't overlap the child
+   slides that are rendered (as separate steps) over the lower area; the thin
+   bottom border separates this concept from its narrower concepts below */
+.card.has-stage .content { padding: 22px 30px 10px; height: 36%; overflow: hidden;
+  border-bottom: 1px solid var(--line); }
+
+.eyebrow { font-size: 15px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent, var(--muted)); font-weight: 700; margin-bottom: 5px; }
+.breadcrumb { color: var(--muted); font-size: 15px; margin-bottom: 8px; }
+.breadcrumb .sep { opacity: .5; margin: 0 6px; }
+
+/* ---- two-column top: title + text on the left, image on the top-right ---- */
+.top { display: flex; gap: 28px; align-items: flex-start; }
+.top-left { flex: 1 1 auto; min-width: 0; }
+.top-right { flex: 0 0 auto; }
+.top-right .imgwrap { aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--line); background: #000; }
+.top-right .imgwrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.top-right .vidwrap video { display: block; border-radius: 10px; border: 1px solid var(--line); background: #000; }
+
+.title { margin: 0 0 12px; }
+.title .l { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  font-size: 52px; line-height: 1.05; font-weight: 700; }
+
+.subtitle { margin: -4px 0 12px; }
+.subtitle .l { display: block; color: var(--muted); font-size: 16px; }
+
+.def { font-size: 19px; line-height: 1.5; margin: 0 0 10px; }
+.def .l { display: block; }
+.note { font-size: 15px; color: var(--muted); margin: 6px 0 0; }
+.note b { color: var(--text); font-weight: 600; }
+
+/* host (has-stage) cards: compact fixed top; image fills its height and thereby
+   carves out the width left for the title + text */
+.card.has-stage .top { height: 100%; }
+.card.has-stage .top-right { height: 100%; }
+.card.has-stage .top-right .imgwrap { height: 100%; width: auto; }
+.step.active .card.has-stage .title .l { font-size: 40px; }
+.card.has-stage .def { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* leaf cards: comfortable fixed image size on the right */
+.card:not(.has-stage) { padding: 34px 42px; }
+.card:not(.has-stage) .top-right .imgwrap { width: 460px; }
+.card:not(.has-stage) .top-right .vidwrap video { width: 460px; }
+
+/* Nested PREVIEW cards render at a fraction of the parent's size, so their
+   normal title is unreadable. Enlarge the title on non-active cards so the
+   narrower slides are legible from the broader slide; the slide you actually
+   enter (.active) keeps its normal title size. */
+.step:not(.active) .card .title .l { font-size: 92px; line-height: 1.04; -webkit-line-clamp: 3; }
+
+/* big index badge on each card; press its number key to jump straight there.
+   Hidden on the active slide (you're already on it). */
+.cardnum { position: absolute; top: 24px; right: 26px; z-index: 3; pointer-events: none;
+  font-size: 92px; font-weight: 800; line-height: 1; color: var(--accent, #e6edf3);
+  opacity: .9; text-shadow: 0 3px 12px rgba(0,0,0,.55); }
+.step.active .cardnum { display: none; }
+
+/* high fan-out (>8 children): stack child titles as a bullet list instead of
+   nested cards; the children themselves are full slides placed below */
+.childlist { position: absolute; left: 2.5%; right: 2.5%; top: 40%; bottom: 3%;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: min-content; gap: 4px 20px; align-content: start;
+  overflow: auto; padding: 12px 8px; }
+.cl-item { position: relative; display: block; text-align: left; width: 100%;
+  background: transparent; border: 0; color: var(--text); cursor: pointer;
+  font-family: inherit; font-size: 21px; line-height: 1.3;
+  padding: 7px 10px 7px 44px; border-radius: 8px; }
+.cl-item:hover { background: var(--card-2); }
+.cl-item .l { display: inline; }
+.cl-num { position: absolute; left: 0; width: 34px; text-align: right; color: var(--accent, var(--muted)); font-weight: 700; }
+
+.chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chips .lbl { font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-right: 4px; }
+.chip { display: inline-block; padding: 5px 12px; border-radius: 999px; cursor: pointer;
+  background: var(--card-2); border: 1px solid var(--line); color: var(--text); font-size: 14px;
+  transition: all .15s ease; }
+.chip:hover { border-color: var(--accent, var(--muted)); transform: translateY(-1px); }
+.chip.related { border-style: dashed; }
+
+/* Overview */
+#step-overview .card { border-top-color: #ffffff33; }
+
+/* Language visibility rules (body.show-<lang>) are injected from config at runtime */
+
+/* ---------- Fixed UI ---------- */
+/* Bottom navigation bar (auto-hides; reveals on pointer near the bottom) */
+#navbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 9px 18px; background: rgba(13,17,23,.82); border-top: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+  transform: translateY(115%); opacity: 0; pointer-events: none;
+  transition: transform .3s ease, opacity .3s ease; }
+#navbar.show { transform: none; opacity: 1; pointer-events: auto; }
+#navbar .nav-hint { color: var(--muted); font-size: 13px; }
+#navbar .nav-hint kbd { background: var(--card-2); border: 1px solid var(--line); border-bottom-width: 2px;
+  border-radius: 5px; padding: 1px 6px; font-family: inherit; font-size: 12px; color: var(--text); }
+#navbar .nav-controls { display: flex; align-items: center; gap: 10px; }
+#navbar #overview-btn { background: var(--card); color: var(--text); border: 1px solid var(--line);
+  padding: 9px 15px; border-radius: 8px; font-size: 14px; cursor: pointer; font-weight: 600; }
+#navbar #overview-btn:hover { border-color: var(--muted); }
+
+/* segmented language switch (one button per language, active highlighted) */
+#lang-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+#lang-switch button { background: var(--card); color: var(--muted); border: 0;
+  border-right: 1px solid var(--line); padding: 9px 14px; font-size: 14px; font-weight: 700;
+  cursor: pointer; letter-spacing: .04em; }
+#lang-switch button:last-child { border-right: 0; }
+#lang-switch button:hover:not(.active) { color: var(--text); }
+#lang-switch button.active { background: #2dd4bf; color: #08131a; }
+
+/* Loading / warm-up cover */
+#warmup { position: fixed; inset: 0; z-index: 50; background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  transition: opacity .45s ease; }
+#warmup.hide { opacity: 0; pointer-events: none; }
+#warmup .spinner { width: 42px; height: 42px; border-radius: 50%;
+  border: 4px solid var(--line); border-top-color: var(--WindVaneSystemType);
+  animation: wu-spin .8s linear infinite; }
+#warmup .wu-label { color: var(--muted); font-size: 15px; letter-spacing: .05em; }
+@keyframes wu-spin { to { transform: rotate(360deg); } }
+

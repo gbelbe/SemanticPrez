@@ -1,0 +1,52 @@
+{
+  "_comment": "SKOS example. Run:  python -m semanticprez.build examples/windvane/config.json",
+
+  "input": "windvane-taxonomy.ttl",
+  "output": "build",
+
+  "namespaces": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
+
+  "languages": ["en", "fr"],
+
+  "concept": { "type": "skos:Concept" },
+
+  "scheme": {
+    "type": "skos:ConceptScheme",
+    "fields": {
+      "title":       { "property": "dcterms:title", "localized": true },
+      "description": { "property": "dcterms:description", "localized": true }
+    }
+  },
+
+  "hierarchy": {
+    "narrower": "skos:narrower",
+    "broader": "skos:broader",
+    "topConcept": "skos:hasTopConcept"
+  },
+
+  "fields": {
+    "title":       { "property": "skos:prefLabel", "localized": true },
+    "subtitle":    { "property": "skos:altLabel",  "localized": true, "multi": true },
+    "description": { "property": "skos:definition", "localized": true },
+    "note":        { "property": "skos:scopeNote",  "localized": true },
+    "image":       { "property": "schema:image" },
+    "video":       { "property": "schema:video" },
+    "links":       { "property": "rdfs:seeAlso", "multi": true },
+    "related":     { "property": "skos:related", "multi": true, "ref": true }
+  },
+
+  "display": [
+    { "field": "subtitle",    "as": "subtitle" },
+    { "field": "image",       "as": "image" },
+    { "field": "video",       "as": "video" },
+    { "field": "description", "as": "paragraph" },
+    { "field": "note",        "as": "note",  "label": { "en": "Scope", "fr": "Portée" } },
+    { "field": "links",       "as": "links", "label": { "en": "Links", "fr": "Liens" } },
+    { "field": "related",     "as": "chips", "label": { "en": "Related", "fr": "Associé" } }
+  ]
+}

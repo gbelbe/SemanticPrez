@@ -1,0 +1,20 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix ex: <http://example.org/s#> .
+
+ex:Scheme a skos:ConceptScheme ;
+    dcterms:title "Test Scheme"@en ;
+    skos:hasTopConcept ex:Animal .
+
+# hierarchy expressed with broader only (must be inverted to narrower)
+ex:Animal a skos:Concept ; skos:prefLabel "Animal"@en, "Animal"@fr .
+ex:Mammal a skos:Concept ; skos:broader ex:Animal ;
+    skos:prefLabel "Mammal"@en, "Mammifère"@fr ;
+    skos:definition "A warm-blooded vertebrate."@en .
+ex:Dog a skos:Concept ; skos:broader ex:Mammal ;
+    skos:prefLabel "Dog"@en ;
+    skos:altLabel "Canine"@en ;
+    skos:related ex:Mammal ;
+    schema:image "http://example.org/dog.jpg" .
+ex:Cat a skos:Concept ; skos:broader ex:Mammal ; skos:prefLabel "Cat"@en .
