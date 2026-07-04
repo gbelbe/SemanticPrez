@@ -9,10 +9,11 @@ a self-contained presentation folder (``data.js`` + the viewer assets).
 Usage:  python -m semanticprez.build path/to/config.json
         semanticprez path/to/config.json          # if installed
 """
-import sys
-import os
+
 import json
+import os
 import shutil
+import sys
 
 from rdflib import Graph, URIRef
 from rdflib.namespace import RDF
@@ -22,8 +23,16 @@ VIEWER_DIR = os.path.join(HERE, "viewer")
 VIEWER_FILES = ("index.html", "style.css", "app.js", "impress.min.js")
 
 DEFAULT_PALETTE = [
-    "#2dd4bf", "#a78bfa", "#60a5fa", "#f59e0b", "#34d399",
-    "#f472b6", "#38bdf8", "#fb7185", "#a3e635", "#c084fc",
+    "#2dd4bf",
+    "#a78bfa",
+    "#60a5fa",
+    "#f59e0b",
+    "#34d399",
+    "#f472b6",
+    "#38bdf8",
+    "#fb7185",
+    "#a3e635",
+    "#c084fc",
 ]
 
 
@@ -44,6 +53,7 @@ def _expander(namespaces):
     def expand(qname):
         prefix, local = qname.split(":", 1)
         return URIRef(namespaces[prefix] + local)
+
     return expand
 
 
@@ -93,8 +103,12 @@ def build_data(cfg, base_dir="."):
     node_types = cfg.get("nodeTypes") or [cfg["concept"]["type"]]
     node_type_uris = [expand(t) for t in node_types]
     h = cfg["hierarchy"]
-    parent_props = [expand(p) for p in (h.get("parentLinks") or ([h["broader"]] if h.get("broader") else []))]
-    child_props = [expand(p) for p in (h.get("childLinks") or ([h["narrower"]] if h.get("narrower") else []))]
+    parent_props = [
+        expand(p) for p in (h.get("parentLinks") or ([h["broader"]] if h.get("broader") else []))
+    ]
+    child_props = [
+        expand(p) for p in (h.get("childLinks") or ([h["narrower"]] if h.get("narrower") else []))
+    ]
 
     node_subj = {}
     for t in node_type_uris:
@@ -162,8 +176,9 @@ def build_data(cfg, base_dir="."):
         visited.add(cid)
         n = concepts[cid]
         n["branch"], n["parent"], n["depth"] = branch, parent, depth
-        kids = [c for c in sorted(n["narrower"], key=title_key)
-                if c in concepts and c not in visited]
+        kids = [
+            c for c in sorted(n["narrower"], key=title_key) if c in concepts and c not in visited
+        ]
         n["child_ids"] = kids
         for c in kids:
             build(c, branch, cid, depth + 1)
@@ -181,14 +196,17 @@ def build_data(cfg, base_dir="."):
     for t in tops:
         dfs(t)
 
-    steps = [{
-        "id": cid,
-        "depth": concepts[cid]["depth"],
-        "parent": concepts[cid]["parent"],
-        "branch": concepts[cid]["branch"],
-        "child_ids": concepts[cid]["child_ids"],
-        "fields": concepts[cid]["fields"],
-    } for cid in ordered]
+    steps = [
+        {
+            "id": cid,
+            "depth": concepts[cid]["depth"],
+            "parent": concepts[cid]["parent"],
+            "branch": concepts[cid]["branch"],
+            "child_ids": concepts[cid]["child_ids"],
+            "fields": concepts[cid]["fields"],
+        }
+        for cid in ordered
+    ]
 
     index = {cid: concepts[cid]["fields"].get("title", {}) for cid in concepts}
 
@@ -234,11 +252,11 @@ def main(argv=None):
 
     steps = out["steps"]
     with_img = sum(1 for s in steps if s["fields"].get("image"))
-    print("nodes: %d | with image: %d | top nodes: %d" % (len(steps), with_img, len(out["tops"])))
-    print("languages: %s" % ", ".join(out["languages"]))
+    print(f"nodes: {len(steps)} | with image: {with_img} | top nodes: {len(out['tops'])}")
+    print(f"languages: {', '.join(out['languages'])}")
     if out["_unreached"]:
-        print("WARNING unreached nodes: %s" % ", ".join(out["_unreached"]))
-    print("open %s" % os.path.join(out_dir, "index.html"))
+        print(f"WARNING unreached nodes: {', '.join(out['_unreached'])}")
+    print(f"open {os.path.join(out_dir, 'index.html')}")
     return 0
 
 

@@ -1,8 +1,7 @@
 """Tests for semanticprez.build — SKOS and OWL graph -> presentation data."""
-import os
-import json
 
-import pytest
+import json
+import os
 
 from semanticprez.build import build_data, write_presentation
 
@@ -25,10 +24,15 @@ SKOS_CFG = {
     },
     "languages": ["en", "fr"],
     "concept": {"type": "skos:Concept"},
-    "scheme": {"type": "skos:ConceptScheme",
-               "fields": {"title": {"property": "dcterms:title", "localized": True}}},
-    "hierarchy": {"narrower": "skos:narrower", "broader": "skos:broader",
-                  "topConcept": "skos:hasTopConcept"},
+    "scheme": {
+        "type": "skos:ConceptScheme",
+        "fields": {"title": {"property": "dcterms:title", "localized": True}},
+    },
+    "hierarchy": {
+        "narrower": "skos:narrower",
+        "broader": "skos:broader",
+        "topConcept": "skos:hasTopConcept",
+    },
     "fields": {
         "title": {"property": "skos:prefLabel", "localized": True},
         "subtitle": {"property": "skos:altLabel", "localized": True, "multi": True},
@@ -44,7 +48,7 @@ def test_skos_all_nodes_and_tops():
     data = build_data(SKOS_CFG, FIX)
     ids = steps_by_id(data)
     assert set(ids) == {"Animal", "Mammal", "Dog", "Cat"}
-    assert data["tops"] == ["Animal"]          # via skos:hasTopConcept
+    assert data["tops"] == ["Animal"]  # via skos:hasTopConcept
     assert data["_unreached"] == []
 
 
@@ -62,9 +66,9 @@ def test_skos_field_extraction():
     ids = steps_by_id(build_data(SKOS_CFG, FIX))
     dog = ids["Dog"]["fields"]
     assert dog["title"] == {"en": "Dog"}
-    assert dog["subtitle"] == {"en": ["Canine"]}          # localized + multi
-    assert dog["image"] == "http://example.org/dog.jpg"   # plain literal
-    assert dog["related"] == ["Mammal"]                    # ref -> local id
+    assert dog["subtitle"] == {"en": ["Canine"]}  # localized + multi
+    assert dog["image"] == "http://example.org/dog.jpg"  # plain literal
+    assert dog["related"] == ["Mammal"]  # ref -> local id
     assert ids["Mammal"]["fields"]["title"] == {"en": "Mammal", "fr": "Mammifère"}
 
 
@@ -87,7 +91,10 @@ OWL_CFG = {
     },
     "languages": ["en"],
     "nodeTypes": ["owl:Class", "owl:NamedIndividual"],
-    "scheme": {"type": "owl:Ontology", "fields": {"title": {"property": "rdfs:label", "localized": True}}},
+    "scheme": {
+        "type": "owl:Ontology",
+        "fields": {"title": {"property": "rdfs:label", "localized": True}},
+    },
     "hierarchy": {"parentLinks": ["rdfs:subClassOf", "rdf:type"], "childLinks": []},
     "fields": {
         "title": {"property": "rdfs:label", "localized": True},
@@ -128,7 +135,7 @@ def test_owl_untagged_label_maps_to_primary_language():
 def test_owl_unlabelled_node_still_present_without_title():
     ids = steps_by_id(build_data(OWL_CFG, FIX))
     assert "Unlabelled" in ids
-    assert "title" not in ids["Unlabelled"]["fields"]   # viewer falls back to the id
+    assert "title" not in ids["Unlabelled"]["fields"]  # viewer falls back to the id
 
 
 # --------------------------------------------------------------------------- #
@@ -142,6 +149,6 @@ def test_write_presentation_emits_data_and_viewer(tmp_path):
         assert os.path.exists(os.path.join(out_dir, name))
     body = open(os.path.join(out_dir, "data.js"), encoding="utf-8").read()
     assert body.startswith("window.TAXONOMY = ")
-    payload = json.loads(body[len("window.TAXONOMY = "):].rstrip().rstrip(";"))
-    assert "_unreached" not in payload           # internal keys stripped from output
+    payload = json.loads(body[len("window.TAXONOMY = ") :].rstrip().rstrip(";"))
+    assert "_unreached" not in payload  # internal keys stripped from output
     assert payload["tops"] == ["Animal"]

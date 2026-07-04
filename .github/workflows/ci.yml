@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+
+# Cancel any in-progress run for the same branch / PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ── 1. Static checks — ruff lint + format ────────────────────────────────────
+  lint:
+    name: Lint (ruff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Install deps
+        run: uv sync --extra dev
+
+      - name: ruff — lint
+        run: uv run ruff check .
+
+      - name: ruff — format check
+        run: uv run ruff format --check .
+
+  # ── 2. JavaScript syntax of the browser assets ───────────────────────────────
+  js:
+    name: Lint JS (node --check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: node --check — syntax of the viewer JS
+        run: node --check semanticprez/viewer/app.js
+
+  # ── 3. Tests ─────────────────────────────────────────────────────────────────
+  test:
+    name: Test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install deps
+        run: uv sync --extra dev
+
+      - name: pytest
+        run: uv run pytest -q

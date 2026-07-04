@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "ruff>=0.6"]
 
 [project.scripts]
 semanticprez = "semanticprez.build:main"
@@ -29,3 +29,19 @@ semanticprez = ["viewer/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+# ── Ruff (linter + formatter) — https://docs.astral.sh/ruff/ ──────────────────
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+extend-exclude = ["examples/*/build"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort (import order)
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+]
