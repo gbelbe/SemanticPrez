@@ -1,5 +1,12 @@
 # SemanticPrez
 
+[![CI](https://github.com/gbelbe/SemanticPrez/actions/workflows/ci.yml/badge.svg)](https://github.com/gbelbe/SemanticPrez/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/gbelbe/SemanticPrez/branch/main/graph/badge.svg)](https://codecov.io/gh/gbelbe/SemanticPrez)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![rdflib](https://img.shields.io/badge/dependency-rdflib%20%E2%89%A57-orange)](https://rdflib.dev)
+[![impress.js 2.0.0](https://img.shields.io/badge/viewer-impress.js%202.0.0-blueviolet)](https://impress.js.org)
+
 **Turn a SKOS taxonomy or an OWL ontology into a zoomable, nested slide deck.**
 
 SemanticPrez reads an RDF (Turtle) file and a small JSON config describing *where
