@@ -71,7 +71,8 @@ html, body {
 
 .title { margin: 0 0 12px; }
 .title .l { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-  font-size: 52px; line-height: 1.05; font-weight: 700; }
+  font-size: 52px; line-height: 1.05; font-weight: 700;
+  transition: font-size .45s ease; }
 
 .subtitle { margin: -4px 0 12px; }
 .subtitle .l { display: block; color: var(--muted); font-size: 16px; }
@@ -100,12 +101,6 @@ html, body {
    enter (.active) keeps its normal title size. */
 .step:not(.active) .card .title .l { font-size: 92px; line-height: 1.04; -webkit-line-clamp: 3; }
 
-/* big index badge on each card; press its number key to jump straight there.
-   Hidden on the active slide (you're already on it). */
-.cardnum { position: absolute; top: 24px; right: 26px; z-index: 3; pointer-events: none;
-  font-size: 92px; font-weight: 800; line-height: 1; color: var(--accent, #e6edf3);
-  opacity: .9; text-shadow: 0 3px 12px rgba(0,0,0,.55); }
-.step.active .cardnum { display: none; }
 
 /* high fan-out (>8 children): stack child titles as a bullet list instead of
    nested cards; the children themselves are full slides placed below */

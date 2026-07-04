@@ -95,21 +95,24 @@
     return (x == null ? "" : String(x)).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
   function titleText(id, lang) { var o = T.index[id] || {}; return o[lang] || o[PRIMARY] || id; }
-  function locHTML(val, isMulti) {
+  function locHTML(val, isMulti, prefix) {
     if (val == null) return "";
+    prefix = prefix || "";
     return LANGS.map(function (lg) {
       var v = val[lg];
       if (v == null || (Array.isArray(v) && !v.length)) return "";
       var txt = Array.isArray(v) ? v.join(", ") : v;
-      return '<span class="l l-' + lg + (lg === PRIMARY ? " primary" : " secondary") + '">' + esc(txt) + "</span>";
+      return '<span class="l l-' + lg + (lg === PRIMARY ? " primary" : " secondary") + '">' +
+        esc(prefix) + esc(txt) + "</span>";
     }).join("");
   }
   function labelHTML(lbl) { return !lbl ? "" : (typeof lbl === "string" ? esc(lbl) : locHTML(lbl, false)); }
   // localized HTML, falling back to the id wrapped in a proper .l span so the
   // title/chip styling (and language rules) still apply to unlabeled nodes
-  function locOrId(valObj, id) {
-    return locHTML(valObj, false) ||
-      '<span class="l l-' + PRIMARY + ' primary">' + esc(titleText(id, PRIMARY)) + "</span>";
+  function locOrId(valObj, id, prefix) {
+    prefix = prefix || "";
+    return locHTML(valObj, false, prefix) ||
+      '<span class="l l-' + PRIMARY + ' primary">' + esc(prefix) + esc(titleText(id, PRIMARY)) + "</span>";
   }
   function chipLabel(id) { return locOrId(T.index[id] || {}, id); }
   function hostOf(u) { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return u; } }
@@ -153,8 +156,11 @@
       (MEDIA_AS[entry.as] ? media : text).push(html);
     });
 
+    // number = this node's position among its parent's children, shown inline
+    // before the title as "N. " (same font/colour as the title)
+    var idx = n.parent ? (kids(n.parent).indexOf(n.id) + 1) : 0;
     var eyebrow = n.id === "overview" ? "Taxonomy" : (n.branch ? esc(titleText(n.branch, PRIMARY)) : "");
-    var titleHtml = locOrId(n.fields.title, n.id);
+    var titleHtml = locOrId(n.fields.title, n.id, idx ? idx + ". " : "");
     var left = '<div class="eyebrow">' + eyebrow + "</div>" + breadcrumb(n) +
       '<h1 class="title">' + titleHtml + "</h1>" + text.join("");
     // top region: title + text on the left, image on the top-right
@@ -162,10 +168,6 @@
       '<div class="top-left">' + left + "</div>" +
       (media.length ? '<div class="top-right">' + media.join("") + "</div>" : "") +
       "</div>";
-
-    // big index badge = this node's position among its parent's children
-    var idx = n.parent ? (kids(n.parent).indexOf(n.id) + 1) : 0;
-    var badge = idx ? '<div class="cardnum">' + idx + "</div>" : "";
 
     if (hasKids) {
       var kd = kids(n.id), many = kd.length > FANOUT_LIMIT;
@@ -176,9 +178,9 @@
             (i + 1) + ".</span> " + chipLabel(id) + "</button>";
         }).join("") + "</div>";
       }
-      return '<div class="card has-stage' + (many ? " list-mode" : "") + '">' + badge + inner + "</div>";
+      return '<div class="card has-stage' + (many ? " list-mode" : "") + '">' + inner + "</div>";
     }
-    return '<div class="card">' + badge + top + "</div>";
+    return '<div class="card">' + top + "</div>";
   }
 
   function makeStep(id) {
